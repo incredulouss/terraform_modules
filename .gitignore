@@ -1,0 +1,5 @@
+terrafrom.tfstate
+.terrafrom.lock.hcl
+terrafrom.tfstate.backup
+.terrafrom
+.modules
