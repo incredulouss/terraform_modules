@@ -1,12 +1,22 @@
+terraform {
+  required_providers {
+    random = {
+      source = "hashicorp/random"
+      version = "3.6.0"
+    }
+  }
+}
 
-data "azurerm_resource_group" "dev_RG" {
-  name = var.devRGName
+resource "random_string" "name" {
+  length  = 6
+  special = false
+  upper   = false
 }
 
 resource "azurerm_kubernetes_cluster" "dev-aks-cluster" {
-  name                = var.dev-aks-cluster
-  location            = data.azurerm_resource_group.dev_RG.location
-  resource_group_name = data.azurerm_resource_group.dev_RG.name
+  name                = "${lower(var.dev-aks-cluster)}${random_string.name.result}"
+  location            = var.location
+  resource_group_name = var.devRGName
   dns_prefix          = var.dev-aks-cluster
 
   default_node_pool {
@@ -38,7 +48,7 @@ resource "azurerm_kubernetes_cluster" "dev-aks-cluster" {
   # }
 
   depends_on = [
-    data.azurerm_resource_group.dev_RG
+    var.devRGName
   ]
   identity {
     type = "SystemAssigned"

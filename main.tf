@@ -16,7 +16,7 @@ module "resourceGroup" {
 
 module "AKS_Cluster" {
   source = "./modules/aks_cluster"
-  devRGName = "example01"
+  devRGName = module.resourceGroup.name
   location = var.devRGlocation
   dev-aks-cluster  = var.dev-aks-cluster
   agnet_pool_name  = var.agnet_pool_name
