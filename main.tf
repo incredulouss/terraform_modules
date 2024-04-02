@@ -10,7 +10,7 @@ provider "azurerm" {
 
 module "resourceGroup" {
   source = "./modules/Resource_group"
-  base_name = "example01"
+  base_name = "example02"
   location = "West Europe"
 }
 
