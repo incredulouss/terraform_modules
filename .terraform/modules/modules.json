@@ -1,1 +1,0 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"AKS_Cluster","Source":"./modules/aks_cluster","Dir":"modules/aks_cluster"},{"Key":"resourceGroup","Source":"./modules/Resource_group","Dir":"modules/Resource_group"}]}

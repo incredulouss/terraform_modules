@@ -14,7 +14,8 @@ resource "random_string" "name" {
 }
 
 resource "azurerm_kubernetes_cluster" "dev-aks-cluster" {
-  name                = "${lower(var.dev-aks-cluster)}${random_string.name.result}"
+  
+  name                = var.dev-aks-cluster
   location            = var.location
   resource_group_name = var.devRGName
   dns_prefix          = var.dev-aks-cluster
